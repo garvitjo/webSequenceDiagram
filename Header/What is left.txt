@@ -1,0 +1,1 @@
+define what is to be shown when profile is clicked, then make sequence accoring to that
