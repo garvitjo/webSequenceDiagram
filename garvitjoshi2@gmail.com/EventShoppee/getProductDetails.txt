@@ -1,0 +1,13 @@
+title Get Product Data
+
+participant Web
+participant getProductData
+
+note over getProductData: Takes product id, occasion, and category as input.
+
+Web -> getProductData: API IS INVOKED.
+
+alt if Product ID exist for that occasion and category
+getProductData -> Web: returns the product data for that id.
+else if Product ID does not exist
+getProductData -> Web: No such product exists.

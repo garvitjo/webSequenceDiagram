@@ -1,0 +1,9 @@
+title Occasion Checklist
+
+participant Web
+participant getChecklist
+
+Web -> getChecklist: API IS INVOKED
+activate getChecklist
+getChecklist -> Web: Sends the checklist data.
+deactivate getChecklist

@@ -1,0 +1,7 @@
+title Orders
+
+Web -> getOrders: API IS INVOKED
+alt if there are no orders
+getOrders -> Web: No orders
+else if an order is already placed
+getOrders -> Web: Sends Order details

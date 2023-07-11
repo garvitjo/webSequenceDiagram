@@ -1,0 +1,48 @@
+title Login
+
+actor User
+participant Web
+participant phoneNumberExistInDatabase as _ph
+participant sendOTP
+participant verifyOTP
+
+note over sendOTP
+Sends OTP to the user's\n entered phone number.
+end Note
+
+note over verifyOTP
+Recieved OTP from sendOTP and\n matches it with user's entered otp.
+end Note
+
+User -> Web: Clicks on login
+
+Web -> Web: Checks if user is\n already logged in.
+
+alt if already logged in
+Web -> User: Redirect to home page.
+else not logged in
+Web -> User: Render Login page.
+end
+User-> Web: Entered phone number, and continue
+
+Web -> _ph: API IS INVOKED
+
+alt Fail: Phone number doesn't exist.
+_ph -> Web: No such phone number exist in database
+Web -> User: Enter valid phone number
+else phone number exist
+_ph -> sendOTP: send OTP to the phone number
+_ph -> Web: Phone number exist.
+Web-> User: Render OTP Validation page.
+
+User -> Web: Enters OTP
+Web -> verifyOTP: API IS INVOKED
+
+alt otp matches with user Entered otp
+verifyOTP -> Web: Success: Otp matches
+verifyOTP -> getUser: Calls getUser
+getUser ->(1)Web: Returns User information.
+Web -> User: Renders homepage for the user.
+else OTP doesn't match
+verifyOTP -> Web: Fail: Invalid OTP.
+Web -> User: Enter a valid OTP.

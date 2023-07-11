@@ -1,0 +1,21 @@
+title Hero Section Search
+
+participant Web
+participant getListingPageData
+participant getOccasionCategoryFlow
+participant getProductsForCategoryAndOccation
+
+note over getListingPageData: requires an \n occasion as input.
+
+note over getOccasionCategoryFlow: requires an \n occasion as input.
+
+note over getProductsForCategoryAndOccation: requires an \n occasion and category as input
+
+Web -> getListingPageData: API IS INVOKED\n to get all the data related to \nlisting page of this occasion
+getListingPageData -> getOccasionCategoryFlow: request Category flow for this occasion
+getOccasionCategoryFlow -> getListingPageData: sends list of the categories for this occasion.
+getListingPageData -> getProductsForCategoryAndOccation: request products data for a \ncategory and Occasion.
+getProductsForCategoryAndOccation -> getProductCardData: request product Card \nData for a product id.
+getProductCardData -> getProductsForCategoryAndOccation: sends the data required \nto create a product card.
+getProductsForCategoryAndOccation -> getListingPageData: Sends the product data for a \ncategory of an occasion.
+getListingPageData -> Web: sends the product data.

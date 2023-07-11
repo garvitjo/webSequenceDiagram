@@ -1,0 +1,32 @@
+title Wishlist CRUD
+
+participant Web
+participant addToWishlist
+participant removeFromWishlist
+participant moveToCart
+
+note over removeFromWishlist: takes a wishlistID and \n a product id as input.
+
+note over addToWishlist: takes a wishListId and \na product Id as input.
+
+note over moveToCart: takes product ID and wishlist id as input.
+
+Web -> addToWishlist: API IS INVOKED
+alt if product is not already added to the wishlist
+addToWishlist -> Web: Product added to wishlist
+else if the product is already added to the wishlist
+addToWishlist -> Web: product already added.
+end
+Web -> removeFromWishlist: API IS INVOKED
+alt if product exist in the wishlist
+removeFromWishlist -> removeFromWishlist: remove the product\n from that wishlist.
+removeFromWishlist -> Web: product is removed.
+else
+removeFromWishlist -> Web: No such product.
+end
+Web -> moveToCart: API IS INVOKED.
+moveToCart -> getCartId: asks for cart id for this wishlist
+getCartId -> moveToCart: sends the card id.
+moveToCart -> addToCart: asks to add to cart the product\n to this cart ID.
+moveToCart -> removeFromWishlist: asks to remove this product\n from the wishlist
+moveToCart -> Web: successfully Moved To cart.

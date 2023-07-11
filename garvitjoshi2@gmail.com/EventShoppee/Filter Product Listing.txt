@@ -1,0 +1,10 @@
+title Filter Product Listing
+
+participant Web
+participant filterProductListingData as filteredData
+participant getProductsForCategoryAndOccation as allData
+
+Web -> filteredData: API IS INVOKED
+filteredData -> allData: Request all the data for that category and occasion.
+allData -> filteredData: Sends the list of all products.
+filteredData -> Web: Sends the filtered Data to the client.

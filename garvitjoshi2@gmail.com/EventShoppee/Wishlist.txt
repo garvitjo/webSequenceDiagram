@@ -1,0 +1,17 @@
+title Wishlist
+actor User
+participant Web
+participant getWishlist
+
+User -> Web: Clicks on wishlist button
+alt User not logged in
+Web -> User: Login first
+else User is logged in.
+Web -> getWishlist: API IS INVOKED
+alt if wishlist is empty
+getWishlist -> Web: Response: there are \nno products in your wishlist.
+else if wishlist have products
+getWishlist -> Web: Response: returns array\n of products in for that user.
+end
+Web -> User: Sends the response.
+end

@@ -1,0 +1,18 @@
+title Search Bar
+
+actor User
+participant Web
+participant searchDatabase
+
+User -> Web: Starts entering search querry
+
+alt search querry less than 3 letters
+Web -> User: Enter atleast 4 alphabets
+else valid Querry
+Web -> searchDatabase: API IS INVOKED
+alt no search result
+searchDatabase -> Web: No data found!
+else search has results
+searchDatabase -> Web: Sends array of product ids.
+end
+end

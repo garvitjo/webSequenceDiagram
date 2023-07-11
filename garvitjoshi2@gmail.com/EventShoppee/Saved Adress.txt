@@ -1,0 +1,7 @@
+title Orders
+
+Web -> getSavedAdress: API IS INVOKED
+alt if there are no Saved Adress
+getSavedAdress -> Web: No Saved Adress
+else if there are saved adress
+getSavedAdress -> Web: Sends saved adress details

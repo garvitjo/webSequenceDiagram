@@ -1,0 +1,11 @@
+title Cart
+participant Web
+participant getCart
+
+Web -> getCart: API IS INVOKED
+
+alt if cart is empty
+getCart -> Web: Your cart is empty!
+else if cart have items
+getCart -> Web: Send Cart data to web.
+

@@ -1,0 +1,21 @@
+title Signup
+
+ participant Web
+ participant phoneNumberExistInDatabase as _ph
+ 
+ Web -> _ph: API IS INVOKED
+ 
+alt if number already exist in database
+_ph -> Web: number already exists
+else if number doesn't Exist in database
+_ph -> sendOTP: send OTP to the phone number
+Web -> verifyOTP: API IS INVOKED
+alt otp matches with user Entered otp
+verifyOTP -> Web: Success: Otp matches
+else OTP doesn't match
+verifyOTP -> Web: Fail: Invalid OTP.
+end
+Web -> createUserProfile: INVOKE API after filling form data for signup
+createUserProfile -> Web: return the user id, and relevant details
+end
+
